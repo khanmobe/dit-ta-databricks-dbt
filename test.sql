@@ -1,0 +1,1 @@
+select * from bronze.dbt_demo.jaffle_shop_customers
