@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    database: bronze
+    schema: dbt_demo
+    tables:
+      - name: jaffle_shop_customers
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
+      - name: jaffle_shop_orders
+        freshness:
+          warn_after: { count: 74, period: hour }
+          error_after: { count: 74, period: hour }
+        loaded_at_field: _etl_loaded_at
